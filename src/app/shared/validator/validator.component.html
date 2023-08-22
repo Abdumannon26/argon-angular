@@ -1,0 +1,51 @@
+<div class="form-group">
+  <li class="field-error"
+      *ngIf="fieldControl?.hasError('password') && fieldControl?.touched">
+    Incorrect password format
+    <ul>
+      <li class="field-error" *ngIf="fieldControl?.hasError('passMinLength')  && fieldControl?.touched">Поле не может
+        contain less than 8 characters
+      </li>
+      <li class="field-error" *ngIf="fieldControl?.hasError('uppercaseLetter')  && fieldControl?.touched">
+        Minimum 1 uppercase letter
+      </li>
+      <li class="field-error" *ngIf="fieldControl?.hasError('lowercaseLetter')  && fieldControl?.touched">
+        Minimum 1 lowercase letter
+      </li>
+      <li class="field-error" *ngIf="fieldControl?.hasError('specSymbols')  && fieldControl?.touched">
+        Minimum 1 special character(@#$!%*?&)
+      </li>
+      <li class="field-error" *ngIf="fieldControl?.hasError('numbers')  && fieldControl?.touched">
+        Minimum 1 number
+      </li>
+    </ul>
+  </li>
+
+  <li class="field-error"
+      *ngIf="fieldControl?.touched && fieldControl?.hasError('required')">
+    Required field
+  </li>
+
+  <li class="field-error"
+      *ngIf="fieldControl?.hasError('minlength')">
+    The field must contain at least {{fieldControl.getError('minlength').requiredLength}} characters
+  </li>
+
+  <li class="field-error"
+      *ngIf="fieldControl?.hasError('maxlength')">
+    Поле не может содержать более {{fieldControl?.getError('maxlength')?.requiredLength}} символов
+  </li>
+
+
+  <li class="field-error"
+      *ngIf="fieldControl?.hasError('pattern') && fieldControl?.touched">
+    Wrong format
+  </li>
+
+  <ng-container *ngIf="fieldControl?.hasError('serverErrors')">
+    <li class="field-error" *ngFor="let error of fieldControl.getError('serverErrors')">
+      {{error}}
+    </li>
+  </ng-container>
+
+</div>

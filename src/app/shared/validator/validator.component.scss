@@ -1,0 +1,13 @@
+
+.form-group {
+  display: block;
+
+  .field-error {
+    color: #be0909;
+    display: block;
+    font-size: 0.75rem;
+  }
+  > li {
+    display: list-item;
+  }
+}
